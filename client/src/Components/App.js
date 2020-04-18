@@ -7,7 +7,6 @@ import Partners from './Partners';
 import Privacy from './Privacy';
 import Tools from './Tools';
 import Facts from './Facts'
-import Test from './Test';
 
 export default class App extends Component{
   render(){
@@ -17,7 +16,6 @@ export default class App extends Component{
           <div>
               <Header />
               <Route exact path="/" component={Landing}></Route>
-              <Route  path="/test" component={Test}></Route>
               <Route  path="/partners" component={Partners}></Route>
               <Route  path="/privacy" component={Privacy}></Route>
               <Route  path="/tools" component={Tools}></Route>
