@@ -7,8 +7,14 @@ import Partners from './Partners';
 import Privacy from './Privacy';
 import Tools from './Tools';
 import Facts from './Facts'
+import * as actions from '../actions/index'
 
-export default class App extends Component{
+class App extends Component{
+  componentDidMount(){
+    console.log(this.props.fetchUser())
+    this.props.fetchUser()
+
+  }
   render(){
     return(
       <div>
@@ -26,3 +32,5 @@ export default class App extends Component{
     )
   }
 }
+
+export default connect(null, actions)(App)

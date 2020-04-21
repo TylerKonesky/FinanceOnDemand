@@ -1,7 +1,18 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 
-export default class Header extends Component{
+class Header extends Component{
+    renderLogin(){
+        switch(this.props.auth){
+            case null:
+                return;
+            case false:
+                return <li><a href="/auth/google">Log In</a></li>;
+            default:
+                return <li><a href="/api/logout">Logout</a></li>
+        }
+    }
     render(){
         return (
             <nav>
@@ -12,9 +23,16 @@ export default class Header extends Component{
                         <li><Link to="/privacy">Privacy</Link></li>
                         <li><Link to="/partners">Partners</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
+                        {this.renderLogin()}
                     </ul>
                 </div>
             </nav>
         )
     }
 }
+
+function mapStateToProps({auth}){
+    return {auth}
+}
+
+export default connect(mapStateToProps)(Header)
