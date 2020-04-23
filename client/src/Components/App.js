@@ -8,7 +8,8 @@ import Privacy from './Privacy';
 import Tools from './Tools';
 import Facts from './Facts'
 import Footer from './Footer';
-import * as actions from '../actions/index'
+import * as actions from '../actions/index';
+import ContactUs from './Contact/Contact';
 
 class App extends Component{
   componentDidMount(){
@@ -27,6 +28,7 @@ class App extends Component{
               <Route  path="/privacy" component={Privacy}></Route>
               <Route  path="/tools" component={Tools}></Route>
               <Route  path="/facts" component={Facts}></Route>
+              <Route  path="/contact" component={ContactUs}></Route>
               <Footer />
           </div>
         </BrowserRouter>

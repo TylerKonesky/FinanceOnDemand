@@ -23,7 +23,7 @@ class Footer extends Component{
                     </div>
 
                 </div>
-                
+
                 <div className="footer-copyright">
                     <div className="container">
                         &copy; 2020 Copyright
