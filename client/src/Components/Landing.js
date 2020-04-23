@@ -7,7 +7,7 @@ class Landing extends Component{
     componentDidMount(){
         let elements = document.querySelectorAll('.parallax');
         M.Parallax.init(elements)
-        console.log("landing page test", this.props.auth)
+
     }
 
     renderWelcome(){

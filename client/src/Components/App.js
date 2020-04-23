@@ -7,6 +7,7 @@ import Partners from './Partners';
 import Privacy from './Privacy';
 import Tools from './Tools';
 import Facts from './Facts'
+import Footer from './Footer';
 import * as actions from '../actions/index'
 
 class App extends Component{
@@ -26,6 +27,7 @@ class App extends Component{
               <Route  path="/privacy" component={Privacy}></Route>
               <Route  path="/tools" component={Tools}></Route>
               <Route  path="/facts" component={Facts}></Route>
+              <Footer />
           </div>
         </BrowserRouter>
       </div>
