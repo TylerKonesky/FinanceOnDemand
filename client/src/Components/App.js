@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header';
-import Landing from './Landing';
-import Partners from './Partners';
-import Privacy from './Privacy';
+import Landing from './Landing/Landing';
+import Partners from './Partners/Partners';
+import Privacy from './Privacy/Privacy';
 import Tools from './Tools';
-import Facts from './Facts'
+import Facts from './Facts/Facts'
 import Footer from './Footer';
 import * as actions from '../actions/index';
 import ContactUs from './Contact/Contact';
@@ -21,6 +21,7 @@ class App extends Component{
     return(
       <div>
         <BrowserRouter>
+        
           <div>
               <Header />
               <Route exact path="/" component={Landing}></Route>

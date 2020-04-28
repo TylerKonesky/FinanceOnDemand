@@ -1,9 +1,10 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import './body.css';
 
 export default class Tools extends Component{
     render(){
         return (
-            <div>
+            <div className="body-size">
                 Tools page
             </div>
         )

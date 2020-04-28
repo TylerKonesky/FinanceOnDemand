@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import M from 'materialize-css';
-import openRoad from '../images/openRoad.jpg'
+import openRoad from '../../images/openRoad.jpg'
 import {connect} from 'react-redux';
 
 class Landing extends Component{
