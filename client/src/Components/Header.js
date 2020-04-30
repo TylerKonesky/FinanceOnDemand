@@ -16,7 +16,7 @@ class Header extends Component{
     render(){
         return (
             <nav>
-                <div className="nav-wrapper">
+                <div className="nav-wrapper blue-grey">
                     <a className="left brand-logo" href="/">Finance On Demand</a>
                     <ul className="right">
                         <li><Link to="/tools">Tools</Link></li>

@@ -1,10 +1,6 @@
-.facts-grid{
+.grid{
     display: grid;
     grid-template-columns: 2fr 2fr 2fr;
-}
-
-.card-width{
-    
 }
 
 .each-card{

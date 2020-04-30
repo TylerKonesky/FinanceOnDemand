@@ -1,0 +1,7 @@
+.each-card{
+    margin: auto 10px;
+}
+
+.each-image img{
+    max-height: 550px;
+}
