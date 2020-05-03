@@ -1,104 +1,99 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import '../body.css';
 
 export default class CreditCard extends Component{
     constructor(props){
         super(props)
         this.state = {
             interest: 0,
-            testData: [
-                {
-                    balance: 1000,
-                    interest: 14.99,
-                    monthlyPayment: 50,
-                    months: 0,
-                    totalInterest: 0
-                },
-                {
-                    balance: 500,
-                    interest: 7.99,
-                    monthlyPayment: 50,
-                    months: 0,
-                    totalInterest: 0
-                },
-                {
-                    balance: 2000,
-                    interest: 10.99,
-                    monthlyPayment: 50,
-                    months: 0,
-                    totalInterest: 0
-                },
-                {
-                    balance: 5000,
-                    interest: 21.99,
-                    monthlyPayment: 250,
-                    months: 0,
-                    totalInterest: 0
-                },
-            ],
+            cardNickname: '',
+            cardBalance: 0,
+            interestRate: 0,
+            monthlyPayment: 0,
             cards: []
         }
     }
 
-    caluclation(testData){
-        testData.map(card =>{
+    caluclation(data){
+        console.log(data)
+        data.map(card =>{
             while(card.balance > 0){
                 card.balance -= card.monthlyPayment;
                 card.months += 1;
-                let tempInterest = (card.balance * (card.interest / 1200));
+                let tempInterest = (card.balance * (card.interestRate / 1200));
                 card.totalInterest += (tempInterest)
                 card.balance += tempInterest;
             }
            
         })
-        testData.map(card =>{
+        data.map(card =>{
             this.state.interest += card.totalInterest;
         })
-        return testData;
+        return data;
     }
 
     renderCalculations = () =>{
-        const calc = this.caluclation(this.state.testData);
+        const calc = this.caluclation(this.state.cards);
         return calc.map(card =>{
             return(
                 <div>
-                    Months to pay: {card.months}
+                    <div>{card.cardNickname}</div>
+                    <div>Months to pay off: {card.months}</div>
+                    <div>Interest paid: ${Math.round(card.totalInterest)}</div>
                     <br/>
-                    Interest paid: ${Math.round(card.totalInterest)}
+                    
                     <div>---------</div>
                 </div>
             )
         })
     }
+    addCard(e){
+        console.log("saving cards")
+        e.preventDefault();
+        this.setState({
+            cards: [...this.state.cards, {cardNickname: this.state.cardNickname, balance: Number(this.state.cardBalance), interestRate: Number(this.state.interestRate), monthlyPayment: Number(this.state.monthlyPayment), months: 0, totalInterest: 0}]
+        })
+        document.getElementById('creditCardForm').reset();
+    }
     renderCards(){
-        return this.state.cards.map(card =>{
-            return(
-                <div>
-                    <label>Card</label>
-                    <input label="Card"></input>
+        console.log("rendering cards", this.state.cards)
+        return this.state.cards.map(card => {
+            return (
+                <div key={card.cardNickname}>
+                    <div>{card.cardNickname}</div>
                 </div>
             )
         })
     }
 
-    addCard(){
-        
-        this.setState({
-            cards: [...this.state.cards, {card: '', balance: 0, interest: 0, monthlyPayment: 0, months: 0, totalInterest: 0}]
-        })
-        console.log(this.state.cards)
-        
-    }
     render(){
         return(
-            <div className="container">
-                {this.renderCards()}
-                
-                <button onClick={()=>{this.addCard()}}>Add Card</button>
-               
-                
-                
-                {/* {this.renderCalculations()} */}
+            <div className="container row body-size">
+                <h3>Contact Us</h3>
+                <form id="creditCardForm" className="col s12">
+                    <div className="row">
+                        <div className="input-field col s4">
+                            <label>Card Nickname</label>
+                            <input type="text" onChange={(e)=>this.setState({cardNickname: e.target.value})}></input>
+                        </div>
+                        <div className="input-field col s4">
+                            <label>Card Balance</label>
+                            <input type="text" onChange={(e)=>this.setState({cardBalance: e.target.value})}></input>
+                        </div>
+                        <div className="input-field col s4">
+                            <label>Interest Rate</label>
+                            <input type="text" onChange={(e)=>this.setState({interestRate: e.target.value})}></input>
+                        </div>
+                        <div className="input-field col s4">
+                            <label>Monthly Payment</label>
+                            <input type="text" onChange={(e)=>this.setState({monthlyPayment: e.target.value})}></input>
+                        </div>
+                    </div>
+                    <button onClick={(e)=> this.addCard(e)}>Add card</button>
+                </form>
+                <div>{this.renderCalculations()}</div>
             </div>
         )
     }
 }
+
