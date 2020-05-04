@@ -11,7 +11,7 @@ export default class Tools extends Component{
             <div>
                 <div className="page-title">Tools</div>
                 <div className="body-size grid">
-                    <Card image={compass} title="Guidance" content="Learn more about how we can guide you to a successful future."/>
+                    <Card image={compass} title="Payoff Calculator" content="Find out how long it will take to pay off your credit card" linkTo="/tools/creditcard"/>
                     <Card image={keys} title="Retirement" content="Learn more about how we can guide you to a successful future."/>
                     <Card image={pennies} title="Manage Budget" content="Learn more about how we can guide you to a successful future."/>
                  </div>

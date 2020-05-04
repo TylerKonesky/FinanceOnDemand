@@ -8,6 +8,7 @@ import Privacy from './Privacy/Privacy';
 import Tools from './Tools';
 import Facts from './Facts/Facts'
 import Footer from './Footer';
+import CreditCard from './Calculators/CreditCard'
 import * as actions from '../actions/index';
 import ContactUs from './Contact/Contact';
 
@@ -27,7 +28,8 @@ class App extends Component{
               <Route exact path="/" component={Landing}></Route>
               <Route  path="/partners" component={Partners}></Route>
               <Route  path="/privacy" component={Privacy}></Route>
-              <Route  path="/tools" component={Tools}></Route>
+              <Route  exact path="/tools" component={Tools}></Route>
+              <Route  path="/tools/creditcard" component={CreditCard}></Route>
               <Route  path="/facts" component={Facts}></Route>
               <Route  path="/contact" component={ContactUs}></Route>
               <Footer />

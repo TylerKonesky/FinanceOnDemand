@@ -12,7 +12,7 @@ export default class Facts extends Component{
             <div>
                 <div className="page-title">Facts</div>
                 <div className="body-size grid ">
-                    <Card image={image1} title="Card Title" content="This is the random content for this card... we will add more to this later on..."/>
+                    <Card image={image1} title="Card Title" content="This is the random content for this card... we will add more to this later on..." linkTo='/tools/creditcard'/>
                     <Card image={image2} title="Card Title" content="This is the random content for this card... we will add more to this later on..."/>
                     <Card image={image3} title="Card Title" content="This is the random content for this card... we will add more to this later on..."/>
                 </div>

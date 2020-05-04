@@ -7,7 +7,6 @@ export default class Privacy extends Component{
         return (
             <div className="body-size">
                 Privacy notice
-                <CreditCard />
             </div>
         )
     }
