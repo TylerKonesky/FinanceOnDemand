@@ -8,7 +8,7 @@ const Card = props =>{
                     <div className="col s5 m4">
                         <div className="card">
                             <div className="card-image each-image">
-                                <img src={image} style={{width: '100%'}}></img>
+                                <img src={image} alt="random" style={{width: '100%'}}></img>
                                 <span className="card-title">{title}</span>
                                 <a className="btn-floating halfway-fab waves-effect waves-light-red" href={linkTo}><i className="material-icons">add</i></a>
                             </div>

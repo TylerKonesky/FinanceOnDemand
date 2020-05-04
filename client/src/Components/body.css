@@ -20,5 +20,8 @@
     font-size: 40px;
     text-decoration: underline;
     text-align: center;
-    
+}
+
+.header-text{
+    margin-left: 10px;
 }

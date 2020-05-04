@@ -14,7 +14,7 @@ class Landing extends Component{
         switch(this.props.auth){
             case null:
             case false:
-                return <h2 className="header">Welcome to finance on Demand</h2>;
+                return <h2 className="header">Welcome to Finance on Demand</h2>;
             default:
         return <h2 className="header">Welcome, {this.props.auth.name}, to Finance on Demand</h2>
         }
@@ -25,10 +25,10 @@ class Landing extends Component{
             <div>
                 <div className="parallax-container">
                     <div className="parallax">
-                        <img src={openRoad}></img>
+                        <img src={openRoad} alt="open road"></img>
                     </div>
                 </div>
-                <div className="section white" style={{height: '300px'}}>
+                <div className="section teal lighten-5" style={{height: '300px'}}>
                     <div className="row container">
                         {this.renderWelcome()}
                         <p className="grey-text text-darken-3 lighten-3">... random text about what we do ...</p>
@@ -37,7 +37,7 @@ class Landing extends Component{
                 </div>
                 <div className="parallax-container">
                     <div className="parallax">
-                        <img src={openRoad}></img>
+                        <img src={openRoad} alt="open road"></img>
                     </div>
                 </div>
             </div>

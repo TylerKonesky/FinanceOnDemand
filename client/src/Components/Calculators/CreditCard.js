@@ -24,9 +24,6 @@ export default class CreditCard extends Component{
                 card.totalInterest += (tempInterest)
                 card.balance += tempInterest;
             }
-           
-        })
-        data.map(card =>{
             this.state.interest += card.totalInterest;
         })
         return data;

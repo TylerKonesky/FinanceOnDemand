@@ -1,5 +1,4 @@
-import React, {Component} from 'react';
-import {Link } from 'react-router-dom';
+import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 import ContactField from './ContactField';
 import '../body.css'
