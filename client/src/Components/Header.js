@@ -20,7 +20,7 @@ class Header extends Component{
                     <a className="left brand-logo header-text" href="/">Finance On Demand</a>
                     <ul className="right">
                         <li><Link to="/tools">Tools</Link></li>
-                        <li><Link to="/privacy">Privacy</Link></li>
+                        {/* <li><Link to="/privacy">Privacy</Link></li> */}
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
                         {this.renderLogin()}

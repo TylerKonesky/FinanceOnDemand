@@ -1,0 +1,8 @@
+.footer-links{
+    display: flex !important;
+    flex-direction: row !important;
+}
+
+.footer-links a {
+    margin-left: 10px;
+}

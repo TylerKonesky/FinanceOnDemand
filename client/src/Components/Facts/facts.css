@@ -6,3 +6,8 @@
 .each-card{
     margin: auto 10px;
 }
+
+h2, h3{
+    text-align: center;
+    text-decoration: underline;
+}

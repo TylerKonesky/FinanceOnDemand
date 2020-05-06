@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import ContactFields from './ContactFields';
+import '../body.css';
 
 class Contact extends Component{
     submit = values =>{
@@ -7,7 +8,9 @@ class Contact extends Component{
     }
     render(){
         return(
-            <ContactFields onSubmit={this.submit}/>
+            <div className="body-size">
+                <ContactFields onSubmit={this.submit}/>
+            </div>
         )
     }
 }

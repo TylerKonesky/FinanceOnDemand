@@ -1,6 +1,6 @@
 .body-size{
     display: flex;
-    min-height: calc(100vh - 340px);
+    min-height: calc(100vh - 260px);
     flex-direction: column;
     background-color: #fafafa;
 }
