@@ -5,7 +5,7 @@ import './Footer.css'
 class Footer extends Component{
     render(){
         return(
-            <footer className="page-footer  blue-grey">
+            <footer className="page-footer  blue-grey footer-wrapper">
                 <div className="container">
                     <div className="row">
 

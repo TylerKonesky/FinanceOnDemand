@@ -5,3 +5,7 @@
 .each-image img{
     max-height: 550px;
 }
+
+.each-image a{
+    background-color: #C33C54 !important
+}

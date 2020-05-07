@@ -1,7 +1,8 @@
 import React from 'react';
 import {reduxForm, Field} from 'redux-form';
 import ContactField from './ContactField';
-import '../body.css'
+import '../body.css';
+import './Contact.css';
 
 let ContactFields = props =>{
         const {handleSubmit} = props;
@@ -30,7 +31,7 @@ let ContactFields = props =>{
                         <Field type="text" component={ContactField} name='comment' label='Comments'></Field>
                         </div>
                     </div>
-                    <button type="submit" className="teal btn-flat right white-text">
+                    <button type="submit" className="teal btn-flat right contact-button">
                         Submit
                         <i className="material-icons right">done</i>
                     </button>

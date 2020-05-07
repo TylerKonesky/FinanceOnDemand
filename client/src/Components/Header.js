@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import './Header.css'
 
 class Header extends Component{
     renderLogin(){
@@ -16,11 +17,10 @@ class Header extends Component{
     render(){
         return (
             <nav>
-                <div className="nav-wrapper blue-grey">
+                <div className="nav-wrapper blue-grey header-wrapper">
                     <a className="left brand-logo header-text" href="/">Finance On Demand</a>
                     <ul className="right">
                         <li><Link to="/tools">Tools</Link></li>
-                        {/* <li><Link to="/privacy">Privacy</Link></li> */}
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
                         {this.renderLogin()}

@@ -1,3 +1,6 @@
+.footer-wrapper{
+    background-color: #254E70 !important;
+}
 .footer-links{
     display: flex !important;
     flex-direction: row !important;
