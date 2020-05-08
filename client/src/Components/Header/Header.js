@@ -14,12 +14,26 @@ class Header extends Component{
                 return <li><a href="/api/logout">Logout</a></li>
         }
     }
+    renderAdmin(){
+        console.log(this.props.auth)
+        switch(this.props.auth){
+            case null:
+                return;
+            default:
+                if(this.props.auth.userType === 'admin'){
+                    return <li><a href="/facts/manageFacts">Admin</a></li>
+                }else{
+                    return;
+                }
+        }
+    }
     render(){
         return (
             <nav>
                 <div className="nav-wrapper blue-grey header-wrapper">
                     <a className="left brand-logo header-text" href="/">Finance On Demand</a>
                     <ul className="right">
+                        {this.renderAdmin()}
                         <li><Link to="/tools">Tools</Link></li>
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
