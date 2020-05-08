@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './body.css';
-import compass from '../images/compass.jpg';
-import keys from '../images/keys.jpg';
-import pennies from '../images/pennies.jpg';
-import Card from './Cards/Card';
+import '../body.css';
+import compass from '../../images/compass.jpg';
+import keys from '../../images/keys.jpg';
+import pennies from '../../images/pennies.jpg';
+import Card from '../Cards/Card';
 
 export default class Tools extends Component{
     render(){

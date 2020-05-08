@@ -24,11 +24,10 @@ passport.use(new GoogleStrategy({
         const existingUser = await User.findOne({googleId: profile.id})
 
             if(existingUser){
-                console.log(profile)
                 return done(null, existingUser);
             }
-            
-            const user = await new User({googleId: profile.id, name: profile.displayName}).save()
+            console.log("test", profile.emails[0].value)
+            const user = await new User({googleId: profile.id, name: profile.displayName, userType: 'regular', userEmail: profile.emails[0].value}).save()
             done(null, user)
         }
     )

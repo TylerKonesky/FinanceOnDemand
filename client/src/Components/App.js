@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import { connect } from 'react-redux';
-import Header from './Header';
+import Header from './Header/Header';
 import Landing from './Landing/Landing';
 import Partners from './Partners/Partners';
 import Privacy from './Privacy/Privacy';
-import Tools from './Tools';
+import Tools from './Tools//Tools';
 import Facts from './Facts/Facts'
-import Footer from './Footer';
+import Footer from './Footer/Footer';
 import CreditCard from './Calculators/CreditCard'
 import * as actions from '../actions/index';
 import ContactUs from './Contact/Contact';
