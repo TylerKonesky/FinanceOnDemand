@@ -2,7 +2,7 @@
     display: flex;
     min-height: calc(100vh - 260px);
     flex-direction: column;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
 }
 
 .grid{
@@ -15,7 +15,7 @@
 }
 
 .page-title{
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
     padding-top: 20px;
     font-size: 40px;
     text-decoration: underline;

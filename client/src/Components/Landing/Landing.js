@@ -14,9 +14,9 @@ class Landing extends Component{
         switch(this.props.auth){
             case null:
             case false:
-                return <h2 className="header">Welcome to Finance on Demand</h2>;
+                return <div className="header">Welcome to Finance on Demand</div>;
             default:
-        return <h2 className="header">Welcome, {this.props.auth.name}, to Finance on Demand</h2>
+        return <div className="header">Welcome, {this.props.auth.name}, to Finance on Demand</div>
         }
     }
     render(){

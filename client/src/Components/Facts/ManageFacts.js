@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
+import {connect} from 'react-redux';
 import '../body.css';
 import './ManageFacts.css'
 
@@ -27,34 +29,58 @@ class AddFact extends Component{
             console.log(res)
         })
     }
+    renderAuthorizeUser(){
+        switch(this.props.auth){
+            case null:
+                return <div>Loading...</div>
+            default:
+                if(this.props.auth.userType === 'admin'){
+                    return(
+                        <div>
+                            <h3 className="fact-header">Add New Fact</h3>
+                            <form className=""> 
+                                <div className="input-wrapper">
+                                    <div>
+                                        <label>Fact</label>
+                                        <input onChange={(e)=>this.updateFact(e.target.value)}></input>
+                                    </div>
+                                    <div>
+                                        <label>Image URL</label>
+                                        <input onChange={(e)=>this.updateURL(e.target.value)}></input>
+                                    </div>
+
+                                </div>
+
+
+                                <div className="button-wrapper">
+                                    <button onClick={(e)=>this.addNewFact(e)} className="teal btn-flat right contact-button">
+                                            Submit
+                                            <i className="material-icons left">add</i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    )
+                }else{
+                    return(
+                        <div>You are not authorized to view this page.</div>
+                    )
+                }
+        }
+    }
     render(){
         return(
-            <form className="container body-size facts-wrapper"> 
-                <div className="input-wrapper">
-                    <div>
-                        <label>Fact</label>
-                        <input onChange={(e)=>this.updateFact(e.target.value)}></input>
-                    </div>
-                    <div>
-                        <label>Image URL</label>
-                        <input onChange={(e)=>this.updateURL(e.target.value)}></input>
-                    </div>
-
-                </div>
-               
-
-                <div className="button-wrapper">
-                    <button onClick={(e)=>this.addNewFact(e)} className="teal btn-flat right contact-button">
-                            Submit
-                            <i className="material-icons left">add</i>
-                    </button>
-                </div>
-
-                
-                
-            </form>
+            <div className="container body-size facts-wrapper">
+                {this.renderAuthorizeUser()}
+            </div>
+            
         )
     }
 }
 
-export default AddFact
+
+function mapStateToProps({auth}){
+    return {auth}
+}
+
+export default connect(mapStateToProps)(AddFact)
