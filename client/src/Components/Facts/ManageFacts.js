@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { fetchFacts } from '../../actions';
 import '../body.css';
 import './ManageFacts.css'
 
@@ -13,6 +14,9 @@ class AddFact extends Component{
             fact: '',
             imageURL: ''
         }
+    }
+    componentDidMount(){
+        this.props.fetchFacts();
     }
     updateFact(value){
         this.setState({fact: value})
@@ -26,7 +30,44 @@ class AddFact extends Component{
         e.preventDefault();
         const newFact = {fact: this.state.fact, imageURL: this.state.imageURL}
         axios.post('/api/facts/newFact', newFact).then((res)=>{
-            console.log(res)
+            this.props.fetchFacts();
+        })
+        
+    }
+    deleteFact(e, id){
+        e.preventDefault();
+        axios.delete(`/api/facts/deleteFact/${id}`).then(res =>{
+            console.log('fact deleted');
+            this.props.fetchFacts();
+        })
+    }
+
+    renderFacts(){
+        if(this.props.facts === null || this.props.facts === false){
+            return (
+                <div> No data found</div>
+            )
+        }
+        return this.props.facts.map(fact =>{
+            return (
+                <div className="row card-wrapper">
+                    <div className=" col s12 m6">
+                        <div className="card card-background">
+                            <div className="card-content white-text">
+                                <p>Fact: {fact.fact}</p>
+                                <p>Image URL: {fact.imageURL}</p>
+
+                            </div>
+                            <div className="card-action">
+                                <button className="waves-effect waves-light btn edit-background"><i className="material-icons">edit</i></button>
+                                <button className="waves-effect waves-light btn button-right delete-background" onClick={(e)=>{this.deleteFact(e, fact._id)}}><i className="material-icons">cancel</i></button>
+                            </div>
+
+                        </div>
+                    </div>
+                   
+                </div>
+            )
         })
     }
     renderAuthorizeUser(){
@@ -58,6 +99,9 @@ class AddFact extends Component{
                                             <i className="material-icons left">add</i>
                                     </button>
                                 </div>
+                                <div>
+                                    {this.renderFacts()}
+                                </div>
                             </form>
                         </div>
                     )
@@ -79,8 +123,9 @@ class AddFact extends Component{
 }
 
 
-function mapStateToProps({auth}){
-    return {auth}
+function mapStateToProps({auth, facts}){
+    console.log(facts)
+    return {auth, facts}
 }
 
-export default connect(mapStateToProps)(AddFact)
+export default connect(mapStateToProps, {fetchFacts})(AddFact)

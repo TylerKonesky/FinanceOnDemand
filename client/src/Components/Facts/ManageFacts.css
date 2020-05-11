@@ -2,14 +2,33 @@
     margin-top: 5px;
 }
 
-.fact-header{
-    
-}
-
 .input-wrapper{
     padding: 40px;
 }
 
 .button-wrapper{
     margin: 20px 40px 0 0;
+}
+
+.renderedFacts{
+    display: flex;
+    flex-direction: row;
+}
+
+.button-right{
+    margin-left: 10px;
+}
+
+.card-wrapper{
+    margin-left: 20px;
+}
+.card-background{
+    background-color: #37718E;
+}
+.delete-background{
+    background-color: #C33C54;
+}
+
+.edit-background{
+    background-color: #8EE3EF;
 }

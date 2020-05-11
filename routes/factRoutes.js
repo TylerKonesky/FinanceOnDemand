@@ -10,19 +10,38 @@ const Fact = mongoose.model('facts')
 module.exports = (app) => {
 
     app.post('/api/facts/newFact', requireLogin, requireAdmin, async (req, res) =>{
-        const {imageUrl, fact} = req.body;
-        console.log(req.body)
+        const {imageURL, fact} = req.body;
         const newFact = new Fact({
             fact,
-            imageUrl,
+            imageURL,
             createdDate: Date.now()
         });
 
         try{
             await newFact.save();
-            res.send(newFact)
+            const allFacts = await Fact.find()
+            res.send(allFacts)
         }catch(err){
             res.status(422).send(err)
+        }
+    })
+
+    app.get('/api/facts/getAllFacts', requireLogin, requireAdmin, async (req, res) =>{
+        try{
+            const allFacts = await Fact.find();
+            res.send(allFacts)
+        }catch(err){
+            res.status(401).send(err)
+        }
+    })
+
+    app.delete('/api/facts/deleteFact/:id', requireLogin, requireAdmin, async( req, res) => {
+        try{
+            const deleteFact = await Fact.findByIdAndDelete(req.params.id);
+            const remainingFacts = await Fact.find();
+            res.send(remainingFacts)
+        }catch(err){
+            res.status(401).send(err)
         }
     })
 }
