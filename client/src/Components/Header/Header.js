@@ -15,7 +15,6 @@ class Header extends Component{
         }
     }
     renderAdmin(){
-        console.log(this.props.auth)
         switch(this.props.auth){
             case null:
                 return;
