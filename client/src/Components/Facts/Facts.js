@@ -40,7 +40,7 @@ class Facts extends Component{
     urlParser(url){
         url.split("/");
         let id = url.split('/')
-        return `https://drive.google.com/thumbnail?id=${id[id.length -2]}`
+        return `https://drive.google.com/uc?export=view&id=${id[id.length -2]}`
     }
 
     renderFacts(){
