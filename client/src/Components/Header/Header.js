@@ -30,10 +30,11 @@ class Header extends Component{
         return (
             <nav>
                 <div className="nav-wrapper blue-grey header-wrapper">
-                    <a className="left brand-logo header-text" href="/">Finance On Demand</a>
+                    <a className="left brand-logo header-text" href="/">Finance On Demand &trade;</a>
                     <ul className="right">
                         {this.renderAdmin()}
                         <li><Link to="/tools">Tools</Link></li>
+                        {/* <li><Link to="/about">About Us</Link></li> */}
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
                         {this.renderLogin()}

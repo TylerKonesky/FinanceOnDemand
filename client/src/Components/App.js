@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {BrowserRouter, Route, Link, Redirect, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import Header from './Header/Header';
+import AboutUs from './AboutUs/AboutUs';
 import Landing from './Landing/Landing';
 import Partners from './Partners/Partners';
 import Privacy from './Privacy/Privacy';
@@ -26,6 +27,7 @@ class App extends Component{
           <div>
               <Header />
               <Route exact path="/" component={Landing}></Route>
+              <Route path="/about" component={AboutUs}></Route>
               <Route  path="/partners" component={Partners}></Route>
               <Route  path="/privacy" component={Privacy}></Route>
               <Route  exact path="/tools" component={Tools}></Route>
