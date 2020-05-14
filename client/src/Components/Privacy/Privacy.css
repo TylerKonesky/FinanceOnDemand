@@ -1,8 +1,16 @@
 .privacy-body{
     margin-top: 5px;
     padding: 10px;
+    font-size: 80%;
 }
 
-.privacy-body span{
-    margin-left: 10px;
+.privacy-body h2{
+    margin-bottom: 40px;
+}
+
+.privacy-body h4{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 20px;
 }

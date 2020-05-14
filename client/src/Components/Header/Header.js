@@ -34,7 +34,7 @@ class Header extends Component{
                     <ul className="right">
                         {this.renderAdmin()}
                         <li><Link to="/tools">Tools</Link></li>
-                        {/* <li><Link to="/about">About Us</Link></li> */}
+                        <li><Link to="/about">About Us</Link></li>
                         <li><Link to="/contact">Contact</Link></li>
                         <li><Link to="/facts">Facts</Link></li>
                         {this.renderLogin()}
