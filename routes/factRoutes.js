@@ -26,7 +26,7 @@ module.exports = (app) => {
         }
     })
 
-    app.get('/api/facts/getAllFacts', requireLogin, requireAdmin, async (req, res) =>{
+    app.get('/api/facts/getAllFacts', async (req, res) =>{
         try{
             const allFacts = await Fact.find();
             res.send(allFacts)

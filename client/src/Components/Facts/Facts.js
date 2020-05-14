@@ -21,26 +21,13 @@ class Facts extends Component{
             <div style={style}>
                 <img src={this.urlParser(fact.imageURL)} alt=""></img>
             </div>
-            // <div key={fact._id}className="col s12 m7 card-width" style={style}>
-            //     <div className="card horizontal">
-            //         <div className="card-image">
-            //             <img src={this.urlParser(fact.imageURL)} alt=""></img>
-            //         </div>
-            //         <div className="card-stacked">
-            //             <div className="card-content">
-            //                 {fact.fact}
-            //             </div>
-            //         </div>
-        
-            //     </div>
-            // </div>
         )
     }
 
     urlParser(url){
         url.split("/");
         let id = url.split('/')
-        return `https://drive.google.com/uc?export=view&id=${id[id.length -2]}`
+        return `https://drive.google.com/uc?export=view&id=${id[id.length -2]}` || null
     }
 
     renderFacts(){
