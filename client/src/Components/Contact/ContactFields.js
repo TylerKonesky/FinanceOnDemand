@@ -32,7 +32,7 @@ let ContactFields = props =>{
                         </div>
                     </div>
                     <button type="submit" className="teal btn-flat right contact-button">
-                        Submit
+                        Send
                         <i className="material-icons right">done</i>
                     </button>
                 </form>
