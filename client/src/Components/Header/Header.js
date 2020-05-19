@@ -5,7 +5,7 @@ import './Header.css'
 
 class Header extends Component{
     renderLogin(){
-        switch(this.props.auth){
+        switch(this.props.user){
             case null:
                 return;
             case false:
@@ -15,11 +15,11 @@ class Header extends Component{
         }
     }
     renderAdmin(){
-        switch(this.props.auth){
+        switch(this.props.user){
             case null:
                 return;
             default:
-                if(this.props.auth.userType === 'admin'){
+                if(this.props.user.userType === 'admin'){
                     return <li><a href="/facts/manageFacts">Admin</a></li>
                 }else{
                     return;
@@ -45,8 +45,8 @@ class Header extends Component{
     }
 }
 
-function mapStateToProps({auth}){
-    return {auth}
+function mapStateToProps({user}){
+    return {user}
 }
 
 export default connect(mapStateToProps)(Header)

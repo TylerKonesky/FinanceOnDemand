@@ -13,6 +13,7 @@ import ManageFacts from './Facts/ManageFacts';
 import CreditCard from './Calculators/CreditCard'
 import * as actions from '../actions/index';
 import ContactUs from './Contact/Contact';
+import ManageProfile from './Profile/ManageProfile';
 
 class App extends Component{
   componentDidMount(){
@@ -27,6 +28,7 @@ class App extends Component{
           <div>
               <Header />
               <Route exact path="/" component={Landing}></Route>
+              <Route exact path="/manage-profile" component={ManageProfile}></Route>
               <Route path="/about" component={AboutUs}></Route>
               <Route  path="/partners" component={Partners}></Route>
               <Route  path="/privacy" component={Privacy}></Route>

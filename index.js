@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 require('./models/User');
 require('./models/Fact');
+require('./models/Article')
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
@@ -28,6 +29,7 @@ app.use(passport.session());
 
 require('./routes/authRoutes')(app)
 require('./routes/factRoutes')(app)
+require('./routes/profileRoutes')(app)
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

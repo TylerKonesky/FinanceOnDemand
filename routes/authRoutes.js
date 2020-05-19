@@ -10,7 +10,10 @@ module.exports = (app) => {
         
             passport.authenticate('google'),
             (req, res) => {
-                res.redirect('/')
+                if(req.user.registered){
+                    res.redirect('/')
+                }
+                res.redirect('/manage-profile')
             })
 
     app.get('/api/logout', (req, res)=>{

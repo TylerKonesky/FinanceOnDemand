@@ -6,6 +6,11 @@ export const fetchUser = () => async dispatch =>{
     dispatch({ type: FETCH_USER, payload: res.data})
 }
 
+export const updateUser = (obj) => async dispatch => {
+    
+    console.log("this is the actions", obj)
+}
+
 export const fetchFacts = () => async dispatch =>{
     console.log("when does this happen?")
     const res = await axios.get('/api/facts/getAllFacts');
