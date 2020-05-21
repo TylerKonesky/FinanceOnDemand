@@ -12,12 +12,12 @@ class Landing extends Component{
     }
 
     renderWelcome(){
-        switch(this.props.auth){
+        switch(this.props.user){
             case null:
             case false:
                 return <div className="header">Welcome to Finance on Demand</div>;
             default:
-        return <div className="header">Welcome, {this.props.auth.name}, to Finance on Demand</div>
+        return <div className="header">Welcome, {this.props.user.name}, to Finance on Demand</div>
         }
     }
     render(){
@@ -46,8 +46,8 @@ class Landing extends Component{
     }
 }
 
-function mapStateToProps({auth}){
-    return {auth}
+function mapStateToProps({user}){
+    return {user}
 }
 
 export default connect(mapStateToProps)(Landing)
