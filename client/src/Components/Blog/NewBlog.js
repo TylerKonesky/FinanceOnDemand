@@ -1,43 +1,59 @@
 import React, {Component} from 'react';
-import {Editor, EditorState, RichUtils} from 'draft-js';
-import 'draft-js/dist/Draft.css';
+import { Editor } from '@tinymce/tinymce-react';
 import '../body.css';
 import './TextEditor.css';
 
-class NewBlog extends Component{
+class NewBlog extends Component {
     constructor(props){
         super(props);
         this.state = {
-            editorState: EditorState.createEmpty()
+            display: ''
         }
-        this.onChange = editorState => this.setState({editorState})
     }
+  handleEditorChange = (content, editor) => {
+    console.log('Content was updated:', content);
+  }
 
-    toggleInlineStyle = event => {
-        event.preventDefault();
-        let style = event.currentTarget.getAttribute('data-style');
-        this.setState({
-            editorState: RichUtils.toggleInlineStyle(this.state.editorState, style)
-        })
-    }
-    render(){
-        return(
-            <div className="container body-size">
-                <h1>This is the new blog post</h1>
+  onSubmit(e){
+    e.preventDefault();
+    let check = document.getElementById('test')
+    // this.setState({
+    //     display: check.form
+    // })
+    console.log(check.form)
+  }
+
+  render() {
+    return (
+        <form className="body-size text-editor-wrapper container">
+            <h2>Create New blog Post</h2>
+            <Editor id="test"
+                initialValue="<p>This is the initial content of the editor</p>"
+                init={{
+                  menubar: true,
+                  height: 500,
+                  plugins: [
+                    'advlist autolink lists link image charmap print preview anchor',
+                    'searchreplace visualblocks code fullscreen',
+                    'insertdatetime media table paste code help wordcount'
+                  ],
+                  toolbar:
+                    'undo redo | formatselect | bold italic backcolor | \
+                    alignleft aligncenter alignright alignjustify | \
+                    bullist numlist outdent indent | removeformat | help'
+                }}
+                onEditorChange={this.handleEditorChange}
                 
-                <div className="text-editor">
-                    <div className="button-wrapper">
-                        <input type="button" value="Bold" data-style="BOLD" onMouseDown={this.toggleInlineStyle}/>  
-                        <input type="button" value="Italic" data-style="ITALIC" onMouseDown={this.toggleInlineStyle}/>  
-                        <input type="button" value="Underline" data-style="UNDERLINE" onMouseDown={this.toggleInlineStyle}/> 
-                    </div>
-                       
-                    <Editor editorState={this.state.editorState} onChange={this.onChange}/> 
-                </div>
-                
+            />
+            <button onClick={e=>this.onSubmit(e)}>Submit</button>
+            <div>
+            {this.state.display}
             </div>
-        )
-    }
+            
+        </form>
+     
+    );
+  }
 }
 
-export default NewBlog
+export default NewBlog;
