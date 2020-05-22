@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Editor } from '@tinymce/tinymce-react';
+import axios from 'axios';
 import '../body.css';
 import './TextEditor.css';
 
@@ -7,21 +8,34 @@ class NewBlog extends Component {
     constructor(props){
         super(props);
         this.state = {
+            content: '',
             display: ''
         }
     }
-  handleEditorChange = (content, editor) => {
-    console.log('Content was updated:', content);
+  handleEditorChange = (e, content, editor) => {
+    console.log('Content was updated:', content.getContent());
+    this.setState({
+      content: content.getContent({format: 'html'})
+    })
   }
 
   onSubmit(e){
     e.preventDefault();
-    let check = document.getElementById('test')
-    // this.setState({
-    //     display: check.form
-    // })
-    console.log(check.form)
+    console.log("submitted", this.state.content)
+    axios.post('/api/blogs/new', {content: this.state.content}).then(res =>{
+      console.log(res)
+    })
+    
+    
   }
+
+  // renderTextContent(){
+    
+  //   if(this.state.content === ''){
+  //     return null
+  //   }
+  //   return(<div dangerouslySetInnerHTML={{__html: this.state.content}}></div>)
+  // }
 
   render() {
     return (
@@ -42,14 +56,12 @@ class NewBlog extends Component {
                     alignleft aligncenter alignright alignjustify | \
                     bullist numlist outdent indent | removeformat | help'
                 }}
+                value={this.state.content}
                 onEditorChange={this.handleEditorChange}
+                onSubmit={this.onSubmit}
                 
             />
             <button onClick={e=>this.onSubmit(e)}>Submit</button>
-            <div>
-            {this.state.display}
-            </div>
-            
         </form>
      
     );

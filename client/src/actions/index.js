@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { FETCH_USER, FETCH_FACTS } from './types';
+import { FETCH_USER, FETCH_FACTS, FETCH_ARTICLES } from './types';
 
 export const fetchUser = () => async dispatch =>{
     const res = await axios.get('/api/current_user');
@@ -12,7 +12,12 @@ export const updateUser = (obj) => async dispatch => {
 }
 
 export const fetchFacts = () => async dispatch =>{
-    console.log("when does this happen?")
     const res = await axios.get('/api/facts/getAllFacts');
     dispatch({type: FETCH_FACTS, payload: res.data})
+}
+
+export const fetchArticles = () => async dispatch =>{
+    console.log('fetching all articles...');
+    const res = await axios.get('/api/blogs/getAllArticles');
+    dispatch({type: FETCH_ARTICLES, payload: res.data})
 }
