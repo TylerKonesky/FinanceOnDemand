@@ -24,18 +24,8 @@ class NewBlog extends Component {
     console.log("submitted", this.state.content)
     axios.post('/api/blogs/new', {content: this.state.content}).then(res =>{
       console.log(res)
-    })
-    
-    
+    })    
   }
-
-  // renderTextContent(){
-    
-  //   if(this.state.content === ''){
-  //     return null
-  //   }
-  //   return(<div dangerouslySetInnerHTML={{__html: this.state.content}}></div>)
-  // }
 
   render() {
     return (

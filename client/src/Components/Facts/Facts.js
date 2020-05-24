@@ -61,10 +61,7 @@ class Facts extends Component{
                                 this.dynamicCard(fact, "center")
                             )
                     }
-
-                })
-                
-
+                })  
         }
     }
     

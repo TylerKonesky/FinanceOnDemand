@@ -122,7 +122,6 @@ class AddFact extends Component{
     }
 }
 
-
 function mapStateToProps({auth, facts}){
     console.log(facts)
     return {auth, facts}
