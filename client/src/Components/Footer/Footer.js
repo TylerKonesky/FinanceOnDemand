@@ -19,6 +19,7 @@ class Footer extends Component{
                                 <li><Link className="grey-text text-lighten-3" style={{marginLeft: '0px'}} to="/">Home</Link></li>
                                 <li><Link className="grey-text text-lighten-3" to="/contact">Contact Us</Link></li>
                                 <li><Link className="grey-text text-lighten-3" to="/privacy">Privacy</Link></li>
+                                <li><Link className="grey-text text-lighten-3" to="/about">About Us</Link></li>
                             </ul>
                         </div>
                     </div>

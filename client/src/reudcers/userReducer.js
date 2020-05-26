@@ -6,6 +6,7 @@ export default function(state = null, action){
             return action.payload || false;
         case UPDATE_USER:
             console.log(action.payload)
+            break;
         
         default:
             return state; 

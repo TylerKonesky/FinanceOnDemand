@@ -4,9 +4,6 @@ import { fetchArticles } from '../../actions';
 import '../body.css'
 
 class ViewAllBlogs extends Component{
-    constructor(props){
-        super(props)
-    }
     componentDidMount(){
         this.props.fetchArticles();
     }
@@ -21,8 +18,7 @@ class ViewAllBlogs extends Component{
                 return this.props.articles.map(article =>{
                     return(
                         <div>
-                            <a href={`blogs/${article._id}`}>Title: {article.title}</a>
-                            <div dangerouslySetInnerHTML={{__html: article.body}}></div>
+                            <a href={`article/${article._id}`}>Title: {article.title}</a>
                         </div>
                     )
                 })

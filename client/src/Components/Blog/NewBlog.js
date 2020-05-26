@@ -9,7 +9,7 @@ class NewBlog extends Component {
         super(props);
         this.state = {
             content: '',
-            display: ''
+            title: ''
         }
     }
   handleEditorChange = (e, content, editor) => {
@@ -19,10 +19,14 @@ class NewBlog extends Component {
     })
   }
 
+  handleTitleChange = (e) =>{
+    this.setState({title: e.target.value})
+  }
+
   onSubmit(e){
     e.preventDefault();
     console.log("submitted", this.state.content)
-    axios.post('/api/blogs/new', {content: this.state.content}).then(res =>{
+    axios.post('/api/articles/new', {content: this.state.content, title: this.state.title}).then(res =>{
       console.log(res)
     })    
   }
@@ -31,6 +35,8 @@ class NewBlog extends Component {
     return (
         <form className="body-size text-editor-wrapper container">
             <h2>Create New blog Post</h2>
+            <label>Title</label>
+            <input type="text" onChange={e => this.handleTitleChange(e)}></input>
             <Editor id="test"
                 initialValue="<p>This is the initial content of the editor</p>"
                 init={{

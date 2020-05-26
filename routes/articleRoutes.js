@@ -8,7 +8,7 @@ const Article = mongoose.model('articles')
 
 
 module.exports = (app) => {
-    app.get('/api/blogs/getAllArticles', async(req, res) =>{
+    app.get('/api/articles/getAllArticles', async(req, res) =>{
         try{
             const allArticles = await Article.find()
             res.send(allArticles)
@@ -17,11 +17,20 @@ module.exports = (app) => {
         }
     })
 
-    app.post('/api/blogs/new', requireLogin, async (req, res) =>{
+    app.get('/api/articles/:id', async (req, res) =>{
+        try{
+            const article = await Article.findById(req.params.id);
+            res.status(200).send(article)
+        }catch(err){
+            res.send("Article not found")
+        }
+    })
+
+    app.post('/api/articles/new', requireLogin, async (req, res) =>{
         try{
             const newArticle = new Article({
                 creatorId: req.user.id, 
-                title: 'test title',
+                title: req.body.title,
                 body: req.body.content, 
                 status: 'live', 
                 createdDate: Date.now()

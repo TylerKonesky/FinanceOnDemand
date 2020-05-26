@@ -18,6 +18,6 @@ export const fetchFacts = () => async dispatch =>{
 
 export const fetchArticles = () => async dispatch =>{
     console.log('fetching all articles...');
-    const res = await axios.get('/api/blogs/getAllArticles');
+    const res = await axios.get('/api/articles/getAllArticles');
     dispatch({type: FETCH_ARTICLES, payload: res.data})
 }
