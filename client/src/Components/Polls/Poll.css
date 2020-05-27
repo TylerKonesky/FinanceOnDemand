@@ -1,0 +1,29 @@
+.poll-card-background{
+    background-color:#06543c
+}
+
+.poll-button{
+    background-color: #c2a25d;
+    min-width: 75px;
+    margin-left: 10px;
+}
+
+.results-wrapper{
+    display: flex;
+    flex-direction: row;
+    
+}
+
+.result-answer{
+    min-width: 50px;
+}
+.result-percent{
+    padding-left: 10%;
+}
+
+/* gold: #ad8d49
+lighter-gold: #c2a25d
+green1: #38485e
+green2: #185542
+green3: #06543c
+green4: #053426 */

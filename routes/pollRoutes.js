@@ -46,6 +46,24 @@ module.exports = (app) => {
 
     app.post('/api/polls/response', requireLogin, async(req, res) =>{
         console.log(req.body) 
+        let updatedPoll = await Poll.findById(req.body.id);
+        if(updatedPoll.respondedUsers.includes(req.user.id)){
+            console.log('User alread responded')
+            return;
+        }
+        try{
+            updatedPoll.answers.map(answer =>{
+                if(answer.answer.toString() === req.body.response.answer){
+                    answer.responses += 1;
+                }
+            })
+            updatedPoll.respondedUsers.push(req.user.id)
+            const completedUpdate = await Poll.findByIdAndUpdate(req.body.id, updatedPoll)
+            res.send(completedUpdate)
+        }catch(err){
+            res.status(422).send(err)
+        }
+        
     })
 
     app.delete('/api/polls/deletePoll/:id', requireLogin, requireAdmin, async( req, res) => {

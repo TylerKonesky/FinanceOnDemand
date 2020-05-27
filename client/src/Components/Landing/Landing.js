@@ -33,7 +33,7 @@ class Landing extends Component{
                 <div className="section landing-body-wrapper" style={{height: '300px'}}>
                     <div className="row container ">
                         {this.renderWelcome()}
-                        {/* <p className="grey-text text-darken-3 lighten-3"><Poll /></p> */}
+                        <div className="grey-text text-darken-3 lighten-3"><Poll /></div>
                     </div>
                     
                 </div>
