@@ -5,9 +5,12 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const bodyParser = require('body-parser');
 
-require('./models/User');
-require('./models/Fact');
 require('./models/Article')
+require('./models/Fact');
+require('./models/Poll')
+require('./models/User');
+
+
 require('./services/passport');
 
 mongoose.Promise = global.Promise;
@@ -27,10 +30,12 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
+require('./routes/articleRoutes')(app)
 require('./routes/authRoutes')(app)
 require('./routes/factRoutes')(app)
+require('./routes/pollRoutes')(app)
 require('./routes/profileRoutes')(app)
-require('./routes/articleRoutes')(app)
+
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

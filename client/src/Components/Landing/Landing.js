@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import M from 'materialize-css';
 import openRoad from '../../images/openRoad.jpg'
 import {connect} from 'react-redux';
+import Poll from '../Polls/Poll'
 import './Landing.css'
 
 class Landing extends Component{
@@ -32,7 +33,7 @@ class Landing extends Component{
                 <div className="section landing-body-wrapper" style={{height: '300px'}}>
                     <div className="row container ">
                         {this.renderWelcome()}
-                        <p className="grey-text text-darken-3 lighten-3">... random text about what we do ...</p>
+                        {/* <p className="grey-text text-darken-3 lighten-3"><Poll /></p> */}
                     </div>
                     
                 </div>

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { fetchFacts } from '../../actions';
 import '../body.css';
@@ -70,11 +71,11 @@ class AddFact extends Component{
         })
     }
     renderAuthorizeUser(){
-        switch(this.props.auth){
+        switch(this.props.user){
             case null:
                 return <div>Loading...</div>
             default:
-                if(this.props.auth.userType === 'admin'){
+                if(this.props.user.userType === 'admin'){
                     return(
                         <div>
                             <h3 className="fact-header">Add New Fact</h3>
@@ -114,6 +115,10 @@ class AddFact extends Component{
     render(){
         return(
             <div className="container body-size facts-wrapper">
+                <div>Admin Header...
+                    <Link to="/facts/manageFacts">Manage Facts</Link>
+                    <Link to="/polls/managePolls">Manage Polls</Link>
+                </div>
                 {this.renderAuthorizeUser()}
             </div>
             
@@ -121,9 +126,9 @@ class AddFact extends Component{
     }
 }
 
-function mapStateToProps({auth, facts}){
+function mapStateToProps({user, facts}){
     console.log(facts)
-    return {auth, facts}
+    return {user, facts}
 }
 
 export default connect(mapStateToProps, {fetchFacts})(AddFact)

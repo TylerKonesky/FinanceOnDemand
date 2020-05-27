@@ -12,7 +12,8 @@ import Facts from './Facts/Facts'
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import Landing from './Landing/Landing';
-import ManageFacts from './Facts/ManageFacts';
+import ManageFacts from './Admin/ManageFacts';
+import ManagePolls from './Admin/ManagePolls';
 import ManageProfile from './Profile/ManageProfile';
 import NewBlog from './Blog/NewBlog';
 import Partners from './Partners/Partners';
@@ -38,9 +39,10 @@ class App extends Component{
               <Route exact path ="/articles/new" component={NewBlog}></Route>
               <Route path ="/article/:id" component={ViewBlog}></Route>
               <Route  path="/contact" component={ContactUs}></Route>
-              <Route exact path="/manage-profile" component={ManageProfile}></Route>
               <Route  exact path="/facts" component={Facts}></Route>
               <Route  path="/facts/manageFacts" component={ManageFacts}></Route>
+              <Route  path="/polls/managePolls" component={ManagePolls}></Route>
+              <Route exact path="/manage-profile" component={ManageProfile}></Route>
               <Route  path="/partners" component={Partners}></Route>
               <Route  path="/privacy" component={Privacy}></Route>
               <Route  exact path="/tools" component={Tools}></Route>
