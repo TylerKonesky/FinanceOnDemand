@@ -11,94 +11,90 @@ class Poll extends Component{
         this.props.fetchUser();
     }
 
-    handleClick = (answer) => {
-        axios.post('/api/polls/response', {id: this.props.polls[0]._id, response: answer}).then(res =>{
-            console.log(res.data)
+    handleClick = (response) => {
+        axios.post('/api/polls/response', {id: response.id, response: response.answer}).then(res =>{
+            this.props.fetchPolls();
         })
     }
+
+
+    //***** Checks for the active poll and then renders information based on the active status *****
     pollRespondable(){
         switch(this.props.polls){
             case null:
-                return(<div>Poll</div>);
+                return null;
             case false: 
-                return(<div>No polls found....</div>);
+                return(<div>There are currently no active polls</div>);
             default:
-                if(this.props.polls[0].respondedUsers.includes(this.props.user._id)){
-                return(<div>{this.renderPollResults()}</div>)
-                }
-                return(
-                    <div className="row">
-                        <div className="col s12 m6">
-                            <div className="card poll-card-background">
-                                <div className="card-content white-text">
-                                    <span className="card-title">Monthly Poll</span>
-                                    <p>{this.props.polls[0].question}</p> 
-                                </div>
-                                <div className="card-action">
-                                    {this.renderResponseTypes()}
+                return this.props.polls.map(poll =>{
+                    if(poll.active === true){
+                        if(poll.respondedUsers.includes(this.props.user._id)){
+                            return(<div key={poll.question}>{this.renderPollResults(poll)}</div>)
+                        }
+                        return(
+                            <div key={poll.question} className="row">
+                                <div className="col s12 m6">
+                                    <div className="card poll-card-background">
+                                        <div className="card-content white-text">
+                                            <span className="card-title">Monthly Poll</span>
+                                            <p>{poll.question}</p> 
+                                        </div>
+                                        <div className="card-action">
+                                            {this.renderResponseTypes(poll)}
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                )
-        }
-    }
-    renderPollResults(){
-        switch(this.props.polls){
-            case null:
-                return(<span>Loading answers...</span>);
-            case false: 
-                return(<span>No polls found....</span>);
-            default:
-                let total = 0;
-                this.props.polls[0].answers.map(answer =>{
-                    total += answer.responses;
-                })
-                console.log(total)
-                return(
-                    <div className="row">
-                        <div className="col s12 m6">
-                            <div className="card poll-card-background">
-                                <div className="card-content white-text">
-                                    <span className="card-title">Monthly Poll Results- {this.props.polls[0].question}</span>
-                                    {this.calculateResults(this.props.polls[0].answers, total)}
-                                </div>
-                               
-                            </div>
-                        </div>
-                    </div>
-                )
+                        )
+                    }
+                })     
         }
     }
 
+    //***** Creates the component to render pull results (is called when a user has already voted) *****
+    renderPollResults(poll){
+        let total = 0;
+        poll.answers.map(answer =>{
+            total += answer.responses;
+        })
+        return(
+            <div key={poll.id} className="row">
+                <div className="col s12 m6">
+                    <div className="card poll-card-background">
+                        <div className="card-content white-text">
+                            <span className="card-title">Monthly Poll Results- {poll.question}</span>
+                            {this.calculateResults(poll.answers, total)}
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        )
+    }
+
+    //***** Calculates the total responses of the active poll / each response total *****
     calculateResults(answers, total){
         return answers.map(answer =>{
             return(
-            <div className="results-wrapper"> 
+            <div key={answer.answer} className="results-wrapper"> 
                 <div className="result-answer">
                     {answer.answer}
                 </div>
                 <div className="result-percent">
-                    {Math.floor((answer.responses / total)*100)}%
+                    {Math.floor((answer.responses / total) * 100)}%
                 </div>
             </div>
             )
         })
     }
-   
-    renderResponseTypes(){
-        switch(this.props.polls){
-            case null:
-                return(<span>Loading answers...</span>);
-            case false: 
-                return(<span>No polls found....</span>);
-            default:
-                return this.props.polls[0].answers.map(answer =>{
-                    return(
-                        <button key={answer.answer} className="waves-effect btn poll-button" onClick={()=>this.handleClick({answer: answer.answer.toString()})}>{answer.answer}</button>
-                    )
-                })
-        }
+
+    // ***** creates a button for every response type *****
+    renderResponseTypes(poll){
+        return poll.answers.map(answer =>{
+            return(
+                <button key={answer.answer} className="waves-effect btn poll-button" onClick={()=>this.handleClick({id: poll._id, answer: answer.answer.toString()})}>{answer.answer}</button>
+            )
+        })
     }
     render(){
         return(
