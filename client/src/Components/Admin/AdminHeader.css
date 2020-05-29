@@ -1,0 +1,12 @@
+.admin-link-wrapper{
+    margin-left: 20px;
+}
+.admin-link-wrapper a{
+    color: black;
+    margin: 0 10px;
+}
+
+.admin-link-wrapper .active{
+    font-weight: bold;
+    text-decoration: underline;
+}

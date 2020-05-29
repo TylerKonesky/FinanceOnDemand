@@ -3,8 +3,10 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link } from 'react-router-dom';
 import { fetchPolls } from '../../actions';
+
 import '../body.css';
-import './ManageFacts.css'
+import './ManagePolls.css';
+import './AdminHeader.css';
 
 class ManagePolls extends Component{
     constructor(props){
@@ -35,7 +37,7 @@ class ManagePolls extends Component{
     renderAnswers(answersArray){
         return answersArray.map(answer =>{
             return(
-                <p>
+                <p key={answer.answer}>
                     A: {answer.answer}
                 </p>
             )
@@ -50,10 +52,9 @@ class ManagePolls extends Component{
                 <div> No data found</div>
             )
         }
-        console.log(this.props)
         return this.props.polls.map(poll =>{
             return (
-                <div className="row card-wrapper">
+                <div key={poll._id} className="row card-wrapper">
                     <div className=" col s12 m6">
                         <div className="card card-background">
                             <div className="card-content white-text">
@@ -95,6 +96,8 @@ class ManagePolls extends Component{
 
                                 </div>
 
+                                <div className="poll-answers-notice">* Answers should be entered as a comma separated list. (ex. true, false, I don't know)</div>
+
 
                                 <div className="button-wrapper">
                                     <button className="teal btn-flat right contact-button" onClick={e=>this.onSubmit(e)}>
@@ -118,11 +121,12 @@ class ManagePolls extends Component{
     render(){
         return(
             <div className="container body-size facts-wrapper">
-                <div>Admin Header...
+                <div className="admin-link-wrapper">
                     <Link to="/facts/manageFacts">Manage Facts</Link>
-                    <Link to="/polls/managePolls">Manage Polls</Link>
+                    <Link className="active" to="/polls/managePolls">Manage Polls</Link>
                 </div>
                 {this.renderAuthorizeUser()}
+                
             </div>
             
         )
@@ -130,7 +134,6 @@ class ManagePolls extends Component{
 }
 
 function mapStateToProps({user, polls}){
-    console.log(polls)
     return {user, polls}
 }
 

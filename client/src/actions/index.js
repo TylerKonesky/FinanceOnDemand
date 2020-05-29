@@ -2,11 +2,6 @@ import axios from 'axios';
 import { FETCH_USER, FETCH_FACTS, FETCH_ARTICLES, FETCH_POLLS } from './types';
 
 
-
-
-
-
-
 export const fetchArticles = () => async dispatch =>{
     console.log('fetching all articles...');
     const res = await axios.get('/api/articles/getAllArticles');

@@ -4,7 +4,8 @@ import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import { fetchFacts } from '../../actions';
 import '../body.css';
-import './ManageFacts.css'
+import './ManageFacts.css';
+import './AdminHeader.css';
 
 class AddFact extends Component{
     constructor(props){
@@ -115,8 +116,8 @@ class AddFact extends Component{
     render(){
         return(
             <div className="container body-size facts-wrapper">
-                <div>Admin Header...
-                    <Link to="/facts/manageFacts">Manage Facts</Link>
+                <div className="admin-link-wrapper">
+                    <Link className="active" to="/facts/manageFacts">Manage Facts</Link>
                     <Link to="/polls/managePolls">Manage Polls</Link>
                 </div>
                 {this.renderAuthorizeUser()}
@@ -127,7 +128,6 @@ class AddFact extends Component{
 }
 
 function mapStateToProps({user, facts}){
-    console.log(facts)
     return {user, facts}
 }
 
